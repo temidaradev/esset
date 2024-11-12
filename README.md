@@ -1,3 +1,4 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/temidaradev/esset.svg)](https://pkg.go.dev/github.com/temidaradev/esset)
 # Esset
 
 Esset is a basic asset implementer for ebitengine.
