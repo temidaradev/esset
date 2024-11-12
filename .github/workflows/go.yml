@@ -1,0 +1,51 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Go
+      uses: actions/setup-go@v4
+      with:
+        go-version-file: "go.mod"
+
+
+    - name: Install dependencies
+      run: |
+          sudo apt-get update
+          sudo apt-get install libasound2-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev
+          
+    - name: Close Stale Issues
+      uses: actions/stale@v9.0.0
+            
+          
+    - name: go vet (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        go vet ./...
+
+    - name: go vet (macOS)
+      if: runner.os == 'macOS'
+      run: |
+          go list ./... | grep -v -x -F -f .github/workflows/govetblock_darwin.txt | xargs go vet
+
+    - name: go vet (Windows)
+      if: runner.os == 'Windows'
+      run: |
+          go list ./... | grep -v -x -F -f .github/workflows/govetblock_windows.txt | xargs go vet
+
+    - name: Build
+      run: go build -v ./...
+
+   
