@@ -1,15 +1,16 @@
 package esset
 
 import (
+	"embed"
 	"image"
+	_ "image/png"
 	"log"
-	"os"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-func GetSingleImage(name string) *ebiten.Image {
-	file, err := os.Open(name)
+func GetSingleImage(fs embed.FS, name string) *ebiten.Image {
+	file, err := fs.Open(name)
 	if err != nil {
 		log.Fatal(err)
 	}
