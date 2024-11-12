@@ -9,7 +9,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-func GetSingleImage(fs embed.FS, name string) *ebiten.Image {
+func GetSingleAsset(fs embed.FS, name string) *ebiten.Image {
 	file, err := fs.Open(name)
 	if err != nil {
 		log.Fatal(err)
