@@ -21,7 +21,10 @@ Here is an example: `var Idle = esset.GetAsset(assets, "path/to/your/asset.png")
 
 ## GetMultipleAssets
 
-Important thing is create a folder and put every single tile item (.png) like this ![Resource](./resources/image.png) and then you can use that function easily like this: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` Because of you are selecting more than 1 image our `*ebiten.Image` is a slice you can select by index like this: `TileComponent := assets.Tile[0]` or if you need to get random asset from that folder you can do like this: `TileRandom := assets.Tile[rand.Intn(len(assets.Tile))]`
+Important thing is create a folder and put every single tile item (.png) like this 
+
+<img src="resources/image.png" height="400"> 
+and then you can use that function easily like this: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` Because of you are selecting more than 1 image our `*ebiten.Image` is a slice you can select by index like this: `TileComponent := assets.Tile[0]` or if you need to get random asset from that folder you can do like this: `TileRandom := assets.Tile[rand.Intn(len(assets.Tile))]`
 
 ## UseFont
 
