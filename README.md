@@ -47,4 +47,4 @@ opF.ColorScale.ScaleWithColor(color.White)
 After that you can use `esset.UseFont` func like this: `esset.UseFont(screen, assets.MyFont, "wassup", 24, opF)`
 
 
-Much thanks to @m110 for source support <3
+Much thanks to [@m110](https://github.com/m110) for source support <3
