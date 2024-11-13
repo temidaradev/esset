@@ -9,6 +9,6 @@ import (
 //go:embed *
 var assets embed.FS
 
-var Idle = esset.GetSingleAsset(assets, "mainchar.png")
-var Left = esset.GetSingleAsset(assets, "left.png")
-var Right = esset.GetSingleAsset(assets, "right.png")
+var Idle = esset.GetAsset(assets, "mainchar.png")
+var Left = esset.GetAsset(assets, "left.png")
+var Right = esset.GetAsset(assets, "right.png")
