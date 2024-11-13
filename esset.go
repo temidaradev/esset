@@ -1,6 +1,7 @@
 package esset
 
 import (
+	"bytes"
 	"embed"
 	"image"
 	_ "image/png"
@@ -8,8 +9,7 @@ import (
 	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
-	"golang.org/x/image/font"
-	"golang.org/x/image/font/opentype"
+	"github.com/hajimehoshi/ebiten/v2/text/v2"
 )
 
 func GetAsset(efs embed.FS, path string) *ebiten.Image {
@@ -40,25 +40,21 @@ func GetMultiAssets(efs embed.FS, path string) []*ebiten.Image {
 	return images
 }
 
-func GetFont(efs embed.FS, name string) font.Face {
-	f, err := efs.ReadFile(name)
+var (
+	fontFaceSource *text.GoTextFaceSource
+)
+
+func UseFont(screen *ebiten.Image, data []byte, str string, fontSize int, op *text.DrawOptions) {
+	s, err := text.NewGoTextFaceSource(bytes.NewReader(data))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
+	}
+	fontFaceSource = s
+
+	ffs := &text.GoTextFace{
+		Source: s,
+		Size:   float64(fontSize),
 	}
 
-	tt, err := opentype.Parse(f)
-	if err != nil {
-		panic(err)
-	}
-
-	face, err := opentype.NewFace(tt, &opentype.FaceOptions{
-		Size:    48,
-		DPI:     72,
-		Hinting: font.HintingVertical,
-	})
-	if err != nil {
-		panic(err)
-	}
-
-	return face
+	text.Draw(screen, str, ffs, op)
 }

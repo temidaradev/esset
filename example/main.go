@@ -5,6 +5,8 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
+	"github.com/hajimehoshi/ebiten/v2/text/v2"
+	"github.com/temidaradev/esset"
 	"github.com/temidaradev/esset/example/assets"
 )
 
@@ -94,6 +96,33 @@ var (
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	screen.Fill(LightBlue)
+
+	opF := &text.DrawOptions{}
+	opF.GeoM.Translate(245, 75)
+	opF.ColorScale.ScaleWithColor(color.White)
+	esset.UseFont(screen, assets.MyFont, "ESSET", 48, opF)
+
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Scale(0.3, 0.3)
+	op.GeoM.Translate(0, 0)
+
+	gTileLeft := assets.GopherTile[0]
+	screen.DrawImage(gTileLeft, op)
+
+	op1 := &ebiten.DrawImageOptions{}
+	op1.GeoM.Scale(0.3, 0.3)
+	op1.GeoM.Translate(50, 0)
+
+	gTileMain := assets.GopherTile[1]
+	screen.DrawImage(gTileMain, op1)
+
+	op2 := &ebiten.DrawImageOptions{}
+	op2.GeoM.Scale(0.3, 0.3)
+	op2.GeoM.Translate(100, 0)
+
+	gTileRight := assets.GopherTile[2]
+	screen.DrawImage(gTileRight, op2)
+
 	g.player.Draw(screen, *g)
 
 }
@@ -105,14 +134,6 @@ func (g *Game) Update() error {
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyV) {
 		ebiten.SetVsyncEnabled(!vsync)
-	}
-
-	if inpututil.IsKeyJustPressed(ebiten.KeyW) {
-		g.player.player.x = 0
-	}
-
-	if inpututil.IsKeyJustPressed(ebiten.KeyW) {
-		g.player.player.x = 0
 	}
 
 	return nil
