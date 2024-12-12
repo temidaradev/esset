@@ -23,7 +23,7 @@ var assets embed.FS
 
 重要なのは、フォルダを作成し、すべてのタイルアイテム「.png」を次のように配置することです。
 
-<img src="resources/image.png" height="400">
+<img src="../resources/image.png" height="400">
 
 そして、その関数は次のように簡単に使用できます: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` 1 つ以上の画像を選択しているため、`*ebiten.Image` は次のようにインデックスで選択できるスライスです: `TileComponent := asset.Tile[0]` または、そのフォルダーからランダムなアセットを取得する必要がある場合は、次のように実行できます: `TileRandom := asset.Tile[rand.Intn(len(assets.Tile))]`
 
