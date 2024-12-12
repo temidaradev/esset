@@ -2,6 +2,7 @@
 
 # Esset
 
+[日本語](https://github.com/temidaradev/esset/i18n/README_jp.md) [Türkçe](https://github.com/temidaradev/esset/i18n/README_tr.md)
 Esset is a basic asset implementer for ebitengine.
 
 # Usage
@@ -21,9 +22,9 @@ Here is an example: `var Idle = esset.GetAsset(assets, "path/to/your/asset.png")
 
 ## GetMultipleAssets
 
-Important thing is create a folder and put every single tile item (.png) like this 
+Important thing is create a folder and put every single tile item (.png) like this
 
-<img src="resources/image.png" height="400"> 
+<img src="resources/image.png" height="400">
 
 and then you can use that function easily like this: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` Because of you are selecting more than 1 image our `*ebiten.Image` is a slice you can select by index like this: `TileComponent := assets.Tile[0]` or if you need to get random asset from that folder you can do like this: `TileRandom := assets.Tile[rand.Intn(len(assets.Tile))]`
 
@@ -32,7 +33,7 @@ and then you can use that function easily like this: `var Tile = esset.GetMultip
 For fonts you have to embed fonts seperataly like this:
 
 ```
-//go:embed font/OpenSans-Medium.ttf
+//go:embed path/to/your/font.ttf
 var MyFont []byte
 ```
 
@@ -45,6 +46,5 @@ opF.ColorScale.ScaleWithColor(color.White)
 ```
 
 After that you can use `esset.UseFont` func like this: `esset.UseFont(screen, assets.MyFont, "wassup", 24, opF)`
-
 
 Much thanks to [@m110](https://github.com/m110) for source support <3
