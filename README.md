@@ -2,7 +2,7 @@
 
 # Esset
 
-[日本語](https://github.com/temidaradev/esset/i18n/README_jp.md) [Türkçe](https://github.com/temidaradev/esset/i18n/README_tr.md)
+[日本語](i18n/README_jp.md) [Türkçe](i18n/README_tr.md)
 
 Esset is a basic asset implementer for ebitengine.
 
