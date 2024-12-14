@@ -23,7 +23,7 @@ Tu je príklad: `var Idle = esset.GetAsset(assets, "path/to/your/asset.png")`
 
 Dôležité je vytvoriť priečinok a umiestniť každú jednotlivú dlaždicu (.png) takto
 
-<img src="resources/image.png" height="400">
+<img src="../resources/image.png" height="400">
 
 a potom môžete jednoducho použiť túto funkciu takto: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` Kedže vyberáte viac ako 1 obraz, náš `*ebiten.Image` je pole z ktorého môžete vyberať podľa indexu takto: `TileComponent := assets.Tile[0]`, alebo ak vám treba získať náhodný materiál z toho priečinka tak môžete takto: `TileRandom := assets.Tile[rand.Intn(len(assets.Tile))]`
 
