@@ -29,7 +29,7 @@ Important thing is create a folder and put every single tile item (.png) like th
 
 and then you can use that function easily like this: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` Because of you are selecting more than 1 image our `*ebiten.Image` is a slice you can select by index like this: `TileComponent := assets.Tile[0]` or if you need to get random asset from that folder you can do like this: `TileRandom := assets.Tile[rand.Intn(len(assets.Tile))]`
 
-## UseFont
+## DrawText
 
 For fonts you have to embed fonts seperataly like this:
 
@@ -38,14 +38,8 @@ For fonts you have to embed fonts seperataly like this:
 var MyFont []byte
 ```
 
-After that you should create a `&text.DrawOptions{}` in your `Draw()` func like this:
+No need to create a special DrawOptions for this. Just enter X and Y after font size. Lastly add your color.
 
-```
-opF := &text.DrawOptions{}
-opF.GeoM.Translate(x, y)
-opF.ColorScale.ScaleWithColor(color.White)
-```
-
-After that you can use `esset.UseFont` func like this: `esset.UseFont(screen, assets.MyFont, "wassup", 24, opF)`
+After that you can use `esset.DrawText` func like this: `esset.UseFont(screen, assets.MyFont, "wassup", 24, 100, 50, color.White)`
 
 Much thanks to [@m110](https://github.com/m110) for source support <3

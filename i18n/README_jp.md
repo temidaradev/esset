@@ -27,7 +27,7 @@ var assets embed.FS
 
 そして、その関数は次のように簡単に使用できます: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` 1 つ以上の画像を選択しているため、`*ebiten.Image` は次のようにインデックスで選択できるスライスです: `TileComponent := asset.Tile[0]` または、そのフォルダーからランダムなアセットを取得する必要がある場合は、次のように実行できます: `TileRandom := asset.Tile[rand.Intn(len(assets.Tile))]`
 
-## UseFont
+## DrawText
 
 フォントの場合は、次のようにフォントを個別に埋め込む必要があります。
 
@@ -36,14 +36,8 @@ var assets embed.FS
 var MyFont []byte
 ```
 
-その後、次のように `Draw()` 関数に `&text.DrawOptions{}` を作成する必要があります。
+このための特別な DrawOptions を作成する必要はありません。フォント サイズの後に X と Y を入力するだけです。最後に色を追加します。
 
-```
-opF := &text.DrawOptions{}
-opF.GeoM.Translate(x, y)
-opF.ColorScale.ScaleWithColor(color.White)
-```
-
-その後、`esset.UseFont` 関数を次のように使用できます: `esset.UseFont(screen, asset.MyFont, "wassup", 24, opF)`
+その後、`esset.DrawText` 関数を次のように使用できます: `esset.DrawText(screen, asset.MyFont, "wassup", 24, 100, 50, color.White)`
 
 ソースサポートをしてくれた [@m110](https://github.com/m110) に感謝します <3

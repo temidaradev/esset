@@ -27,7 +27,7 @@ Dôležité je vytvoriť priečinok a umiestniť každú jednotlivú dlaždicu (
 
 a potom môžete jednoducho použiť túto funkciu takto: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` Kedže vyberáte viac ako 1 obraz, náš `*ebiten.Image` je pole z ktorého môžete vyberať podľa indexu takto: `TileComponent := assets.Tile[0]`, alebo ak vám treba získať náhodný materiál z toho priečinka tak môžete takto: `TileRandom := assets.Tile[rand.Intn(len(assets.Tile))]`
 
-## UseFont
+## DrawText
 
 Pre písma ich musíte vložiť oddelene takto:
 
@@ -36,14 +36,8 @@ Pre písma ich musíte vložiť oddelene takto:
 var MyFont []byte
 ```
 
-Potom musíte vytvoriť `&text.DrawOptions{}` vo vašej `Draw()` funkcií takto:
+Na to nie je potrebné vytvárať špeciálne možnosti DrawOptions. Stačí zadať X a Y po veľkosti písma. Nakoniec pridajte svoju farbu.
 
-```
-opF := &text.DrawOptions{}
-opF.GeoM.Translate(x, y)
-opF.ColorScale.ScaleWithColor(color.White)
-```
-
-Potom môžete použiť `esset.UseFont` funkciu takto: `esset.UseFont(screen, assets.MyFont, "wassup", 24, opF)`
+Potom môžete použiť `esset.DrawText` funkciu takto: `esset.DrawText(screen, assets.MyFont, "wassup", 24, 100, 50, color.White)`
 
 Veľmi vďaka pre [@m110](https://github.com/m110) za podporu so zdrojom <3

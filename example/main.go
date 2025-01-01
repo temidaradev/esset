@@ -100,7 +100,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	opF := &text.DrawOptions{}
 	opF.GeoM.Translate(245, 75)
 	opF.ColorScale.ScaleWithColor(color.White)
-	esset.UseFont(screen, assets.MyFont, "ESSET", 48, opF)
+	esset.DrawText(screen, assets.MyFont, "ESSET\nbib", 48, 245, 75, color.White)
 
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Scale(0.3, 0.3)

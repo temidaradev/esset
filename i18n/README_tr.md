@@ -27,7 +27,7 @@ bu embed ifadesini içe aktarma kısmından sonra ekleyin. Artık esset'i asset 
 
 ve sonra bu işlevi şu şekilde kolayca kullanabilirsiniz: `var Tile = esset.GetMultipleAssets(assets, "path/to/your/*.png")` 1'den fazla resim seçtiğiniz için `*ebiten.Image`'imiz şu şekilde dizine göre seçebileceğiniz bir slice'dır: `TileComponent := asset.Tile[0]` veya bu klasörden rastgele bir varlık almanız gerekiyorsa şu şekilde yapabilirsiniz: `TileRandom := asset.Tile[rand.Intn(len(assets.Tile))]`
 
-## UseFont
+## DrawText
 
 Yazı tipleri için yazı tiplerini ayrı ayrı gömmeniz gerekir:
 
@@ -36,14 +36,8 @@ Yazı tipleri için yazı tiplerini ayrı ayrı gömmeniz gerekir:
 var MyFont []byte
 ```
 
-Bundan sonra `Draw()` fonksiyonunuzda `&text.DrawOptions{}` fonksiyonunu şu şekilde oluşturmalısınız:
+Bunun için ayrı bir DrawOptions oluşturmaya gerek yok. Font büyüklüğünden sonra X ve Y ekleyin. Son olarak renginizi ekleyin.
 
-```
-opF := &text.DrawOptions{}
-opF.GeoM.Translate(x, y)
-opF.ColorScale.ScaleWithColor(color.White)
-```
-
-Bundan sonra `esset.UseFont` fonksiyonunu şu şekilde kullanabilirsiniz: `esset.UseFont(screen, asset.MyFont, "naber", 24, opF)`
+Bundan sonra `esset.DrawText` fonksiyonunu şu şekilde kullanabilirsiniz: `esset.DrawText(screen, asset.MyFont, "naber", 24, 100, 50, color.White)`
 
 Çok teşekkürler Kaynak desteği için [@m110](https://github.com/m110) <3

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"embed"
 	"image"
+	"image/color"
 	_ "image/png"
 	"io/fs"
 	"log"
@@ -44,7 +45,7 @@ var (
 	fontFaceSource *text.GoTextFaceSource
 )
 
-func UseFont(screen *ebiten.Image, data []byte, str string, fontSize int, op *text.DrawOptions) {
+func DrawText(screen *ebiten.Image, data []byte, str string, fontSize int, posX, posY float64, color color.Color) {
 	s, err := text.NewGoTextFaceSource(bytes.NewReader(data))
 	if err != nil {
 		log.Fatal(err)
@@ -55,6 +56,11 @@ func UseFont(screen *ebiten.Image, data []byte, str string, fontSize int, op *te
 		Source: s,
 		Size:   float64(fontSize),
 	}
+
+	op := &text.DrawOptions{}
+	op.GeoM.Translate(posX, posY)
+	op.ColorScale.ScaleWithColor(color)
+	op.LayoutOptions.LineSpacing = float64(fontSize)
 
 	text.Draw(screen, str, ffs, op)
 }
