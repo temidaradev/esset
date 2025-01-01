@@ -1,4 +1,4 @@
-module github.com/temidaradev/esset
+module github.com/temidaradev/esset/v2
 
 go 1.23.2
 

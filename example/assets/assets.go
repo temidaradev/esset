@@ -3,7 +3,7 @@ package assets
 import (
 	"embed"
 
-	"github.com/temidaradev/esset"
+	"github.com/temidaradev/esset/v2"
 )
 
 //go:embed *

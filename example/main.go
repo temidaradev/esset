@@ -6,8 +6,8 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"github.com/hajimehoshi/ebiten/v2/text/v2"
-	"github.com/temidaradev/esset"
-	"github.com/temidaradev/esset/example/assets"
+	"github.com/temidaradev/esset/v2"
+	"github.com/temidaradev/esset/v2/example/assets"
 )
 
 type Char struct {
