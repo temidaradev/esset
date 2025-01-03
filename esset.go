@@ -7,7 +7,6 @@ import (
 	"image/color"
 	_ "image/png"
 	"io/fs"
-	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/text/v2"
@@ -16,12 +15,12 @@ import (
 func GetAsset(efs embed.FS, path string) *ebiten.Image {
 	file, err := efs.Open(path)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	img, _, err := image.Decode(file)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	return ebiten.NewImageFromImage(img)
@@ -48,7 +47,7 @@ var (
 func DrawText(screen *ebiten.Image, data []byte, str string, fontSize int, posX, posY float64, color color.Color) {
 	s, err := text.NewGoTextFaceSource(bytes.NewReader(data))
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	fontFaceSource = s
 
