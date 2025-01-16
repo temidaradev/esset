@@ -12,6 +12,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/text/v2"
 )
 
+// Assets
 func GetAsset(efs embed.FS, path string) *ebiten.Image {
 	file, err := efs.Open(path)
 	if err != nil {
@@ -40,26 +41,24 @@ func GetMultiAssets(efs embed.FS, path string) []*ebiten.Image {
 	return images
 }
 
-var (
-	fontFaceSource *text.GoTextFaceSource
-)
-
-func DrawText(screen *ebiten.Image, data []byte, str string, fontSize int, posX, posY float64, color color.Color) {
+// Fonts
+func GetFont(data []byte, fontSize int) (text.Face, error) {
 	s, err := text.NewGoTextFaceSource(bytes.NewReader(data))
 	if err != nil {
 		panic(err)
 	}
-	fontFaceSource = s
 
-	ffs := &text.GoTextFace{
+	return &text.GoTextFace{
 		Source: s,
 		Size:   float64(fontSize),
-	}
+	}, nil
+}
 
+func DrawText(screen *ebiten.Image, str string, fontSize int, posX, posY float64, textFace text.Face, color color.Color) {
 	op := &text.DrawOptions{}
 	op.GeoM.Translate(posX, posY)
 	op.ColorScale.ScaleWithColor(color)
 	op.LayoutOptions.LineSpacing = float64(fontSize)
 
-	text.Draw(screen, str, ffs, op)
+	text.Draw(screen, str, textFace, op)
 }

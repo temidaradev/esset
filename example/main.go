@@ -10,6 +10,10 @@ import (
 	"github.com/temidaradev/esset/v2/example/assets"
 )
 
+func init() {
+	assets.FontFaceS, _ = esset.GetFont(assets.MyFont, 48)
+}
+
 type Char struct {
 	x  int
 	y  int
@@ -100,7 +104,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	opF := &text.DrawOptions{}
 	opF.GeoM.Translate(245, 75)
 	opF.ColorScale.ScaleWithColor(color.White)
-	esset.DrawText(screen, assets.MyFont, "ESSET\nbib", 48, 245, 75, color.White)
+	esset.DrawText(screen, "Esset\nBasic Asset Implementer\nFor Ebitengine!", 48, 0, 75, assets.FontFaceS, color.Black)
 
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Scale(0.3, 0.3)
