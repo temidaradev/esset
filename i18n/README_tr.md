@@ -29,15 +29,28 @@ ve sonra bu işlevi şu şekilde kolayca kullanabilirsiniz: `var Tile = esset.Ge
 
 ## DrawText
 
-Yazı tipleri için yazı tiplerini ayrı ayrı gömmeniz gerekir:
+Yazı tipleri için yazı tiplerini ayrı ayrı gömmelisiniz ve bunun gibi bir `text.Face` değişkeni eklemelisiniz:
 
 ```
-//go:embed font/OpenSans-Medium.ttf
+//go:embed path/to/your/font.ttf
 var MyFont []byte
+var FontFaceS text.Face
+var FontFaceM text.Face
+var FontFaceM text.Face
 ```
 
-Bunun için ayrı bir DrawOptions oluşturmaya gerek yok. Font büyüklüğünden sonra X ve Y ekleyin. Son olarak renginizi ekleyin.
+Daha sonra yazı tipini her seferinde yüklememek için `GetFont()` fonksiyonunu ana dosyanızda bulunan `init()` fonksiyonuna (`Game{}` içerir) şu şekilde koymalısınız:
 
-Bundan sonra `esset.DrawText` fonksiyonunu şu şekilde kullanabilirsiniz: `esset.DrawText(screen, asset.MyFont, "naber", 24, 100, 50, color.White)`
+```
+func init() {
+assets.FontFaceS, _ = esset.GetFont(assets.MyFont, 48)
+}
+```
+
+`GetFont()` fonksiyonunu ayarladıktan sonra `DrawText()` fonksiyonunu kullanmaya hazırsınız
+
+Bunun için özel bir DrawOptions oluşturmanıza gerek yok. Sadece (screen, text, fontSize, posX, posY, text.Face, color)
+
+`esset.DrawText` fonksiyonunu şu şekilde kullanabilirsiniz: `esset.DrawText(screen, "naber", 16, 100, 50, assets.FontFaceS, color.White)`
 
 Çok teşekkürler Kaynak desteği için [@m110](https://github.com/m110) <3

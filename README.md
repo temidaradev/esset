@@ -31,15 +31,28 @@ and then you can use that function easily like this: `var Tile = esset.GetMultip
 
 ## DrawText
 
-For fonts you have to embed fonts seperataly like this:
+For fonts you have to embed fonts seperataly and you should add a `text.Face` variable like this:
 
 ```
 //go:embed path/to/your/font.ttf
 var MyFont []byte
+var FontFaceS text.Face
+var FontFaceM text.Face
+var FontFaceM text.Face
 ```
 
-No need to create a special DrawOptions for this. Just enter X and Y after font size. Lastly add your color.
+Then for not loading the font each time you should put `GetFont()` function into `init()` function which is in your main file (contains `Game{}`) like this:
 
-After that you can use `esset.DrawText` func like this: `esset.UseFont(screen, assets.MyFont, "wassup", 24, 100, 50, color.White)`
+```
+func init() {
+	assets.FontFaceS, _ = esset.GetFont(assets.MyFont, 48)
+}
+```
+
+After setting up the `GetFont()` function you are ready to use the `DrawText()` function
+
+No need to create a special DrawOptions for this. Just (screen, text, fontSize, posX, posY, text.Face, color)
+
+You can use `esset.DrawText` func like this: `esset.DrawText(screen, "wassup", 16, 100, 50, assets.FontFaceS, color.White)`
 
 Much thanks to [@m110](https://github.com/m110) for source support <3

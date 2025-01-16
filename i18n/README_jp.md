@@ -29,15 +29,28 @@ var assets embed.FS
 
 ## DrawText
 
-フォントの場合は、次のようにフォントを個別に埋め込む必要があります。
+フォントの場合は、フォントを個別に埋め込む必要があり、次のように `text.Face` 変数を追加する必要があります:
 
 ```
 //go:embed path/to/your/font.ttf
 var MyFont []byte
+var FontFaceS text.Face
+var FontFaceM text.Face
+var FontFaceM text.Face
 ```
 
-このための特別な DrawOptions を作成する必要はありません。フォント サイズの後に X と Y を入力するだけです。最後に色を追加します。
+次に、フォントを毎回ロードしないようにするには、次のように、メイン ファイル (`Game{}` を含む) にある `init()` 関数に `GetFont()` 関数を配置する必要があります:
 
-その後、`esset.DrawText` 関数を次のように使用できます: `esset.DrawText(screen, asset.MyFont, "wassup", 24, 100, 50, color.White)`
+```
+func init() {
+    assets.FontFaceS, _ = esset.GetFont(assets.MyFont, 48)
+}
+```
+
+`GetFont()` 関数を設定したら、`DrawText()` 関数を使用する準備が整います
+
+このために特別な DrawOptions を作成する必要はありません。 (screen、text、fontSize、posX、posY、text.Face、color) だけです
+
+`esset.DrawText` 関数は次のように使用できます: `esset.DrawText(screen、"こんにちわ", 16, 100, 50, assets.FontFaceS, color.White)`
 
 ソースサポートをしてくれた [@m110](https://github.com/m110) に感謝します <3

@@ -29,15 +29,28 @@ a potom môžete jednoducho použiť túto funkciu takto: `var Tile = esset.GetM
 
 ## DrawText
 
-Pre písma ich musíte vložiť oddelene takto:
+Pre fonty musíte vkladať fonty samostatne a mali by ste pridať premennú `text.Face` takto:
 
 ```
 //go:embed path/to/your/font.ttf
 var MyFont []byte
+var FontFaceS text.Face
+var FontFaceM text.Face
+var FontFaceM text.Face
 ```
 
-Na to nie je potrebné vytvárať špeciálne možnosti DrawOptions. Stačí zadať X a Y po veľkosti písma. Nakoniec pridajte svoju farbu.
+Potom, aby ste nenačítali písmo zakaždým, mali by ste vložiť funkciu `GetFont()` do funkcie `init()`, ktorá je vo vašom hlavnom súbore (obsahuje `Game{}`) takto:
 
-Potom môžete použiť `esset.DrawText` funkciu takto: `esset.DrawText(screen, assets.MyFont, "wassup", 24, 100, 50, color.White)`
+```
+func init() {
+  assets.FontFaceS, _ = esset.GetFont(assets.MyFont, 48)
+}
+```
+
+Po nastavení funkcie `GetFont()` ste pripravení použiť funkciu `DrawText()`
+
+Na to nie je potrebné vytvárať špeciálne možnosti DrawOptions. Len (screen, text, font size, posX, posY, text.Face, color)
+
+Funkciu `esset.DrawText` môžete použiť takto: `esset.DrawText(screen, "wassup", 16, 100, 50, assets.FontFaceS, color.White)`
 
 Veľmi vďaka pre [@m110](https://github.com/m110) za podporu so zdrojom <3
