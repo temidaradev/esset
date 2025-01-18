@@ -43,7 +43,7 @@ Daha sonra yazı tipini her seferinde yüklememek için `GetFont()` fonksiyonunu
 
 ```
 func init() {
-assets.FontFaceS, _ = esset.GetFont(assets.MyFont, 48)
+    assets.FontFaceS, _ = esset.GetFont(assets.MyFont, 48)
 }
 ```
 
