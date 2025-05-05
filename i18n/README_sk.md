@@ -49,8 +49,8 @@ func init() {
 
 Po nastavení funkcie `GetFont()` ste pripravení použiť funkciu `DrawText()`
 
-Na to nie je potrebné vytvárať špeciálne možnosti DrawOptions. Len (screen, text, font size, posX, posY, text.Face, color)
+Na to nie je potrebné vytvárať špeciálne možnosti DrawOptions. Len (screen, text, posX, posY, text.Face, color)
 
-Funkciu `esset.DrawText` môžete použiť takto: `esset.DrawText(screen, "wassup", 16, 100, 50, assets.FontFaceS, color.White)`
+Funkciu `esset.DrawText` môžete použiť takto: `esset.DrawText(screen, "wassup", 100, 50, assets.FontFaceS, color.White)`
 
 Veľmi vďaka pre [@m110](https://github.com/m110) za podporu so zdrojom <3
