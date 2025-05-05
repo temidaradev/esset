@@ -54,11 +54,13 @@ func GetFont(data []byte, fontSize int) (text.Face, error) {
 	}, nil
 }
 
-func DrawText(screen *ebiten.Image, str string, fontSize int, posX, posY float64, textFace text.Face, color color.Color) {
+func DrawText(screen *ebiten.Image, str string, posX, posY float64, textFace text.Face, color color.Color) {
 	op := &text.DrawOptions{}
 	op.GeoM.Translate(posX, posY)
 	op.ColorScale.ScaleWithColor(color)
-	op.LayoutOptions.LineSpacing = float64(fontSize)
+	if goFace, ok := textFace.(*text.GoTextFace); ok {
+		op.LayoutOptions.LineSpacing = goFace.Size
+	}
 
 	text.Draw(screen, str, textFace, op)
 }
