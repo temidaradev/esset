@@ -49,8 +49,8 @@ func init() {
 
 `GetFont()` 関数を設定したら、`DrawText()` 関数を使用する準備が整います
 
-このために特別な DrawOptions を作成する必要はありません。 (screen、text、fontSize、posX、posY、text.Face、color) だけです
+このために特別な DrawOptions を作成する必要はありません。 (screen、text、posX、posY、text.Face、color) だけです
 
-`esset.DrawText` 関数は次のように使用できます: `esset.DrawText(screen、"こんにちわ", 16, 100, 50, assets.FontFaceS, color.White)`
+`esset.DrawText` 関数は次のように使用できます: `esset.DrawText(screen、"こんにちわ", 100, 50, assets.FontFaceS, color.White)`
 
 ソースサポートをしてくれた [@m110](https://github.com/m110) に感謝します <3
