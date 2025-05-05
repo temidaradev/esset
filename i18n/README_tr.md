@@ -49,8 +49,8 @@ func init() {
 
 `GetFont()` fonksiyonunu ayarladıktan sonra `DrawText()` fonksiyonunu kullanmaya hazırsınız
 
-Bunun için özel bir DrawOptions oluşturmanıza gerek yok. Sadece (screen, text, fontSize, posX, posY, text.Face, color)
+Bunun için özel bir DrawOptions oluşturmanıza gerek yok. Sadece (screen, text, posX, posY, text.Face, color)
 
-`esset.DrawText` fonksiyonunu şu şekilde kullanabilirsiniz: `esset.DrawText(screen, "naber", 16, 100, 50, assets.FontFaceS, color.White)`
+`esset.DrawText` fonksiyonunu şu şekilde kullanabilirsiniz: `esset.DrawText(screen, "naber", 100, 50, assets.FontFaceS, color.White)`
 
 Çok teşekkürler Kaynak desteği için [@m110](https://github.com/m110) <3
