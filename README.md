@@ -51,8 +51,8 @@ func init() {
 
 After setting up the `GetFont()` function you are ready to use the `DrawText()` function
 
-No need to create a special DrawOptions for this. Just (screen, text, fontSize, posX, posY, text.Face, color)
+No need to create a special DrawOptions for this. Just (screen, text, posX, posY, text.Face, color)
 
-You can use `esset.DrawText` func like this: `esset.DrawText(screen, "wassup", 16, 100, 50, assets.FontFaceS, color.White)`
+You can use `esset.DrawText` func like this: `esset.DrawText(screen, "wassup", 100, 50, assets.FontFaceS, color.White)`
 
 Much thanks to [@m110](https://github.com/m110) for source support <3
