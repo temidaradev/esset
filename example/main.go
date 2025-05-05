@@ -104,7 +104,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	opF := &text.DrawOptions{}
 	opF.GeoM.Translate(245, 75)
 	opF.ColorScale.ScaleWithColor(color.White)
-	esset.DrawText(screen, "Esset\nBasic Asset Implementer\nFor Ebitengine!", 48, 0, 75, assets.FontFaceS, color.Black)
+	esset.DrawText(screen, "Esset\nBasic Asset Implementer\nFor Ebitengine!", 0, 75, assets.FontFaceS, color.Black)
 
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Scale(0.3, 0.3)
