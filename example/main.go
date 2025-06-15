@@ -5,7 +5,6 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
-	"github.com/hajimehoshi/ebiten/v2/text/v2"
 	"github.com/temidaradev/esset/v2"
 	"github.com/temidaradev/esset/v2/example/assets"
 )
