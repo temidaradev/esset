@@ -101,9 +101,6 @@ var (
 func (g *Game) Draw(screen *ebiten.Image) {
 	screen.Fill(LightBlue)
 
-	opF := &text.DrawOptions{}
-	opF.GeoM.Translate(245, 75)
-	opF.ColorScale.ScaleWithColor(color.White)
 	esset.DrawText(screen, "Esset\nBasic Asset Implementer\nFor Ebitengine!", 0, 75, assets.FontFaceS, color.Black)
 
 	op := &ebiten.DrawImageOptions{}
